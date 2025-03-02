@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        #counter {
+            font-size: 3em;
+            margin: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="counter">0</div>
+        <button onclick="incrementCounter()">点击我！</button>
+        <button onclick="resetCounter()">重置</button>
+    </div>
+
+    <script>
+        // 初始化计数器
+        let count = localStorage.getItem("count") || 0;
+        const counterElement = document.getElementById("counter");
+        counterElement.textContent = count;
+
+        // 定义增加计数器的函数
+        function incrementCounter() {
+            count++; // 计数器加 1
+            counterElement.textContent = count; // 更新显示
+            localStorage.setItem("count", count); // 保存到 localStorage
+        }
+
+        // 定义重置计数器的函数
+        function resetCounter() {
+            count = 0; // 计数器归零
+            counterElement.textContent = count; // 更新显示
+            localStorage.setItem("count", count); // 保存到 localStorage
+        }
+    </script>
+</body>
+</html>
