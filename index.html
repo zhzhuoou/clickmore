@@ -1,66 +1,78 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2304</title>
+    <title>当前年份的每一天及其周数</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-        }
-        #counter {
-            font-size: 3em;
             margin: 20px;
         }
-        button {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin: 5px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        button:hover {
-            background-color: #0056b3;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div id="counter">0</div>
-        <button onclick="incrementCounter()">我们家的小作作最可爱！</button>
-     
-    </div>
+    <h1>当前年份的每一天及其周数</h1>
+    <table id="dateTable">
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>周数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 数据将通过 JavaScript 动态生成 -->
+        </tbody>
+    </table>
 
     <script>
-        // 初始化计数器
-        let count = localStorage.getItem("count") || 0;
-        const counterElement = document.getElementById("counter");
-        counterElement.textContent = count;
+        // 获取当前年份
+        const currentYear = new Date().getFullYear();
 
-        // 定义增加计数器的函数
-        function incrementCounter() {
-            count++; // 计数器加 1
-            counterElement.textContent = count; // 更新显示
-            localStorage.setItem("count", count); // 保存到 localStorage
+        // 创建一个日期对象，从当前年份的第一天开始
+        let date = new Date(currentYear, 0, 1);
+
+        // 获取表格的 tbody 元素
+        const tbody = document.querySelector('#dateTable tbody');
+
+        // 循环遍历每一天
+        while (date.getFullYear() === currentYear) {
+            // 获取当前日期的周数
+            const weekNumber = getWeekNumber(date);
+
+            // 创建一行并插入日期和周数
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${date.toLocaleDateString()}</td>
+                <td>${weekNumber}</td>
+            `;
+            tbody.appendChild(row);
+
+            // 增加一天
+            date.setDate(date.getDate() + 1);
         }
 
-        // 定义重置计数器的函数
-        function resetCounter() {
-            count = 0; // 计数器归零
-            counterElement.textContent = count; // 更新显示
-            localStorage.setItem("count", count); // 保存到 localStorage
+        // 计算周数的函数
+        function getWeekNumber(d) {
+            const date = new Date(d);
+            date.setHours(0, 0, 0, 0);
+            // 设置周四为一周的第一天（ISO 8601 标准）
+            date.setDate(date.getDate() + 4 - (date.getDay() || 7));
+            const yearStart = new Date(date.getFullYear(), 0, 1);
+            const weekNumber = Math.ceil(((date - yearStart) / 86400000 + 1) / 7);
+            return weekNumber;
         }
     </script>
 </body>
