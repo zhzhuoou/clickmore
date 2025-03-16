@@ -1,153 +1,134 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 年日历</title>
+    <title>日期周数查询</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
         }
-        .calendar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .month {
-            width: 300px;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-        .month h2 {
+
+        h1 {
             text-align: center;
-            margin-bottom: 10px;
+            color: #2c3e50;
+            margin-bottom: 20px;
         }
-        .month table {
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
             width: 100%;
             border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .month th, .month td {
-            border: 1px solid #ddd;
-            padding: 8px;
+
+        th,
+        td {
+            padding: 12px;
             text-align: center;
+            border-bottom: 1px solid #ddd;
         }
-        .month th {
-            background-color: #f2f2f2;
+
+        th {
+            background-color: #ecf0f1;
+            color: #2c3e50;
         }
-        .holidays {
-            margin-top: 20px;
+
+        tr:hover {
+            background-color: #f9f9f9;
         }
-        .holidays h3 {
-            margin-bottom: 10px;
-        }
-        .holidays ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .holidays ul li {
-            margin-bottom: 5px;
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
         }
     </style>
 </head>
-<body>
-    <h1>2025 年日历</h1>
-    <div class="calendar">
-        <div class="month">
-            <h2>一月 2025</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>一</th>
-                        <th>二</th>
-                        <th>三</th>
-                        <th>四</th>
-                        <th>五</th>
-                        <th>六</th>
-                        <th>日</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                    </tr>
-                    <tr>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                        <td>25</td>
-                        <td>26</td>
-                        <td>27</td>
-                        <td>28</td>
-                    </tr>
-                    <tr>
-                        <td>29</td>
-                        <td>30</td>
-                        <td>31</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- 其他月份类似，此处省略 -->
-    </div>
 
-    <div class="holidays">
-        <h3>节假日</h3>
-        <ul>
-            <li>1 月 1 日 - 元旦</li>
-            <li>4 月 18 日 - 耶稣受难日</li>
-            <li>6 月 9 日 - 周一假期</li>
-            <li>12 月 26 日 - 节礼日</li>
-            <li>2 月 14 日 - 情人节</li>
-            <li>4 月 20 日 - 复活节</li>
-            <li>6 月 15 日 - 父亲节</li>
-            <li>12 月 31 日 - 新年前夜</li>
-            <li>3 月 2 日 - 狂欢节</li>
-            <li>4 月 21 日 - 复活节周一</li>
-            <li>8 月 25 日 - 夏季银行假日</li>
-            <li>3 月 17 日 - 圣帕特里克节</li>
-            <li>5 月 5 日 - 劳动节</li>
-            <li>10 月 26 日 - 夏令时结束</li>
-            <li>3 月 30 日 - 母亲节</li>
-            <li>5 月 26 日 - 春季银行假日</li>
-            <li>10 月 31 日 - 万圣节</li>
-            <li>3 月 30 日 - 夏令时开始</li>
-            <li>5 月 29 日 - 耶稣升天节</li>
-            <li>11 月 30 日 - 圣安德鲁节</li>
-            <li>4 月 1 日 - 愚人节</li>
-            <li>6 月 8 日 - 圣灵降临节</li>
-            <li>12 月 25 日 - 圣诞节</li>
-        </ul>
+<body>
+    <h1>日期周数查询</h1>
+    <div class="input-container">
+        <label for="year">年份:</label>
+        <input type="number" id="year" placeholder="请输入年份">
+        <button onclick="getWeekNumbers()">查询</button>
     </div>
+    <div id="result"></div>
+
+    <script>
+        // 获取当前年份
+        const currentYear = new Date().getFullYear();
+        document.getElementById('year').value = currentYear;
+
+        // 页面加载完成后默认执行查询
+        window.onload = function () {
+            getWeekNumbers();
+        };
+
+        function getWeekNumbers() {
+            const year = parseInt(document.getElementById('year').value);
+            if (isNaN(year)) {
+                document.getElementById('result').innerHTML = '<p style="color: red;">请输入有效的年份。</p>';
+                return;
+            }
+            let resultHtml = '';
+            for (let month = 1; month <= 12; month++) {
+                const date = new Date(year, month - 1, 1);
+                const daysInMonth = new Date(year, month, 0).getDate();
+                resultHtml += `<h2>${year} 年 ${month} 月</h2><table><thead><tr><th>日期</th><th>周数</th></tr></thead><tbody>`;
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const currentDate = new Date(year, month - 1, day);
+                    const weekNumber = getWeekNumber(currentDate);
+                    resultHtml += `<tr><td>${year}-${month}-${day}</td><td>${weekNumber}</td></tr>`;
+                }
+                resultHtml += '</tbody></table>';
+            }
+            document.getElementById('result').innerHTML = resultHtml;
+        }
+
+        function getWeekNumber(date) {
+            const onejan = new Date(date.getFullYear(), 0, 1);
+            const millisecsInDay = 86400000;
+            return Math.ceil((((date - onejan) / millisecsInDay) + onejan.getDay() + 1) / 7);
+        }
+    </script>
 </body>
+
 </html>
